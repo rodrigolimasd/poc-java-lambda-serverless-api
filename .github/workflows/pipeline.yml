@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  BuildAndDeploy:
+  Build:
     runs-on: ubuntu-latest
     environment:
       name: Prod
@@ -27,7 +27,14 @@ jobs:
       - name: Execute Gradle build
         run: ./gradlew build
 
-      - name: Deploy
+    Deploy:
+      needs: Build
+      runs-on: ubuntu-latest
+      environment:
+        name: Production
+        url: https://test.com
+      steps:
+        name: Serverless Deploy
         uses: serverless/github-action@v3.1
         with:
           args: deploy
