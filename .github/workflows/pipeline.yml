@@ -39,7 +39,7 @@ jobs:
     needs: Build
     runs-on: ubuntu-latest
     environment:
-      name: Production
+      name: Prod
       url: https://test.com
     steps:
       - name: Download artifact
