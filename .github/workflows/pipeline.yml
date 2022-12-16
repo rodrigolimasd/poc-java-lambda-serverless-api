@@ -47,10 +47,7 @@ jobs:
         with:
           name: artifact
       - shell: bash
-        run: |
-            mkdir --parents build/distributions
-            mv hello.zip build/distributions/hello.zip
-            ls
+        run: ls
       - name: Serverless Deploy
         uses: serverless/github-action@v3.1
         with:
