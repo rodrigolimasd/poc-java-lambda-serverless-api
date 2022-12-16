@@ -31,7 +31,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: artifact
-          path: build/distributions/hello.zip
+          path: |
+            build/distributions/hello.zip
+            serverless.yml
 
   Deploy:
     needs: Build
@@ -45,7 +47,10 @@ jobs:
         with:
           name: artifact
       - shell: bash
-        run: ls
+        run: |
+            mkdir --parents build/distributions
+            mv hello.zip build/distributions/hello.zip
+            ls
       - name: Serverless Deploy
         uses: serverless/github-action@v3.1
         with:
