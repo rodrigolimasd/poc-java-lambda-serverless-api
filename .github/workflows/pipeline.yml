@@ -62,5 +62,5 @@ jobs:
       name: Hml
       url: https://test.com
     steps:
-      - Name: Deploy Hml
+      - name: Deploy Hml
         run: echo "Deploy Html"
