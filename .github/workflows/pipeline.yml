@@ -35,7 +35,7 @@ jobs:
             build/distributions/hello.zip
             serverless.yml
 
-  Deploy:
+  Deploy Prod:
     needs: Build
     runs-on: ubuntu-latest
     environment:
@@ -55,3 +55,12 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  Deploy Hml:
+    needs: Build
+    runs-on: ubtuntu-latest
+    environment:
+      name: Hml
+      url: https://test.com
+    steps:
+      - Name: Deploy Hml
+        run: echo "Deploy Html"
